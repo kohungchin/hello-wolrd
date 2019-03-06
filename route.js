@@ -8,27 +8,31 @@ var appRouter = function (app) {
     res.status(200).send({ message: 'Welcome to our restful API' });
   });
 
-  app.get("/user", function (req, res) {
+  app.get("/students", function (req, res) {
     var data = ({
+        
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       username: faker.internet.userName(),
-      email: faker.internet.email()
+      email: faker.internet.email(),
+      id:faker.random.uuid()
     });
     res.status(200).send(data);
   });
 
- app.get("/users/:num", function (req, res) {
+ app.get("/students/:num", function (req, res) {
    var users = [];
    var num = req.params.num;
 
    if (isFinite(num) && num  > 0 ) {
      for (i = 0; i <= num-1; i++) {
        users.push({
+           
            firstName: faker.name.firstName(),
            lastName: faker.name.lastName(),
            username: faker.internet.userName(),
-           email: faker.internet.email()
+           email: faker.internet.email(),
+           id:faker.random.uuid()
         });
      }
 
